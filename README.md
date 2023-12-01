@@ -4,4 +4,6 @@ https://adventofcode.com/2023
 
 ## Day 1
 
-- [extract_digits.py](day01/extract_digits.py)
+- [Python » extract_digits.py](day01/extract_digits.py)
+  - [Tests in test_extract_digits.py](day01/test_extract_digits.py)
+  
