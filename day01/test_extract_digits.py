@@ -14,6 +14,9 @@ class TestExtracdtDigits(unittest.TestCase):
     def testSamplePart2(self):
         self.assertEqual(day1.extract_words_with_digits(day1.sample_file2), 281)
 
+    def testPart2(self):
+        self.assertEqual(day1.extract_words_with_digits(day1.input_file), 53868)
+
 
 
 if __name__ == '__main__':
