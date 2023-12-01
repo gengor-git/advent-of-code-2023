@@ -1,6 +1,6 @@
-$input = 'day01/input.txt'
+$input_file = 'day01/input.txt'
 
-$data = Get-Content -Path $input
+$data = Get-Content -Path $input_file
 $results = 0
 foreach ($entry in $data) {
   $entry = $entry -replace "one", "o1e" `
