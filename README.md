@@ -10,5 +10,5 @@ https://adventofcode.com/2023
 
 ## Day 2
 
-- [Python » cube_condrum.py](day02/cube_condrum.py)
-  - [Tests in test_cube_condrum.py](day02/test_cube_condrum.py)
+- [Python » cube_conundrum.py](day02/cube_conundrum.py)
+  - [Tests in test_cube_conundrum.py](day02/test_cube_conundrum.py)
