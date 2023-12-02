@@ -10,8 +10,8 @@ class TestExtracdtDigits(unittest.TestCase):
     def testPart1(self):
         self.assertEqual(day2.calculate_possible_games(day2.input_file), 2006)
 
-    # def testSamplePart2(self):
-    #     self.assertEqual(day2.extract_words_with_digits(day1.sample_file2), 281)
+    def testSamplePart2(self):
+        self.assertEqual(day2.calculate_minimum_cubes(day2.sample_file), 2286)
 
     # def testPart2(self):
     #     self.assertEqual(day2.extract_words_with_digits(day1.input_file), 53868)
