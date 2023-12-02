@@ -1,5 +1,3 @@
-import re
-
 input_file = "day02/input.txt"
 sample_file = "day02/sample.txt"
 

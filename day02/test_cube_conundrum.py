@@ -1,8 +1,8 @@
 import unittest
-import day02.cube_condrum as day2
+import day02.cube_conundrum as day2
 
 
-class TestExtracdtDigits(unittest.TestCase):
+class TestCubeConundrum(unittest.TestCase):
 
     def testSamplePart1(self):
         self.assertEqual(day2.calculate_possible_games(day2.sample_file), 8)
