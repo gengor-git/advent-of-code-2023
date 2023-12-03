@@ -90,7 +90,8 @@ def is_symbol(row, col, number=0):
     # failsafe if we use an index that's out of bounds
     if not (0 <=row < max_rows and 0 <= col < max_cols):
         return False
-        
+
+    # only in part 2 number is actually set to non-0
     if not number == 0 and data[row][col] == "*":
         global gears_adjecent
         gears_adjecent[row][col].append(number)
