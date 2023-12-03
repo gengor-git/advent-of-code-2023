@@ -14,36 +14,36 @@ def calculate_gears(data_file):
     max_cols = len(data[0])
     gears_adjecent = [[[] for _ in range(max_cols)] for _ in range(max_rows)]
 
-    for i, row in enumerate(data):
+    for idx_row, row in enumerate(data):
         start_position = 0
-        j = 0
-        while j < max_cols:
-            start_position = j 
+        idx_col = 0
+        while idx_col < max_cols:
+            start_position = idx_col 
             gear_number = ""
-            while j < max_cols and row[j].isdigit():
-                gear_number += row[j]
-                j += 1
+            while idx_col < max_cols and row[idx_col].isdigit():
+                gear_number += row[idx_col]
+                idx_col += 1
 
             if gear_number == "":
-                j += 1
+                idx_col += 1
                 continue
 
             gear_number = int(gear_number)
             
             # check surroundings
             # left and right
-            is_symbol(i, start_position-1, number=gear_number) or is_symbol(i, j, number=gear_number)
+            is_symbol(idx_row, start_position-1, number=gear_number) or is_symbol(idx_row, idx_col, number=gear_number)
 
             # row above and below
-            for k in range(start_position-1, j+1):
+            for k in range(start_position-1, idx_col+1):
                 # first above then below
-                is_symbol(i-1, k, number=gear_number) or is_symbol(i+1, k, number=gear_number)
+                is_symbol(idx_row-1, k, number=gear_number) or is_symbol(idx_row+1, k, number=gear_number)
     
-    for i in range(max_rows):
-        for j in range(max_cols):
-            numbers = gears_adjecent[i][j]
+    for idx_row in range(max_rows):
+        for idx_col in range(max_cols):
+            numbers = gears_adjecent[idx_row][idx_col]
             # check for two numbers, that where adjecent to *
-            if data[i][j] == "*" and len(numbers) == 2:
+            if data[idx_row][idx_col] == "*" and len(numbers) == 2:
                 result += numbers[0] * numbers[1]
 
     return result
@@ -57,45 +57,45 @@ def calculate_parts(data_file):
     max_rows = len(data)
     max_cols = len(data[0])
 
-    for i, row in enumerate(data):
+    for idx_row, row in enumerate(data):
         start_position = 0
-        j = 0
-        while j < max_cols:
-            start_position = j 
+        idx_col = 0
+        while idx_col < max_cols:
+            start_position = idx_col 
             gear_number = ""
-            while j < max_cols and row[j].isdigit():
-                gear_number += row[j]
-                j += 1
+            while idx_col < max_cols and row[idx_col].isdigit():
+                gear_number += row[idx_col]
+                idx_col += 1
 
             if gear_number == "":
-                j += 1
+                idx_col += 1
                 continue
 
             gear_number = int(gear_number)
             
             # check surroundings
             # left and right
-            if is_symbol(i, start_position-1) or is_symbol(i, j):
+            if is_symbol(idx_row, start_position-1) or is_symbol(idx_row, idx_col):
                 result += gear_number
                 continue
             # row above and below
-            for k in range(start_position-1, j+1):
+            for k in range(start_position-1, idx_col+1):
                 # first above then below
-                if is_symbol(i-1, k) or is_symbol(i+1, k):
+                if is_symbol(idx_row-1, k) or is_symbol(idx_row+1, k):
                     result += gear_number
                     break
     return result
 
-def is_symbol(i, j, number=0):
+def is_symbol(row, col, number=0):
     # failsafe if we use an index that's out of bounds
-    if not (0 <=i < max_rows and 0 <= j < max_cols):
+    if not (0 <=row < max_rows and 0 <= col < max_cols):
         return False
         
-    if not number == 0 and data[i][j] == "*":
+    if not number == 0 and data[row][col] == "*":
         global gears_adjecent
-        gears_adjecent[i][j].append(number)
+        gears_adjecent[row][col].append(number)
     
-    return data[i][j] != "." and not data[i][j].isdigit()
+    return data[row][col] != "." and not data[row][col].isdigit()
 
 if __name__ == "__main__":
     # print(calculate_parts(sample_file))
