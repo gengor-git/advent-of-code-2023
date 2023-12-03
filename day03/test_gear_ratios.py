@@ -12,7 +12,7 @@ class TestGearRatios(unittest.TestCase):
         self.assertEqual(day3.calculate_gears(day3.sample_file), 467835)
 
     def testPart2(self):
-        self.assertEqual(day3.calculate_gears(day3.sample_file), 82301120)
+        self.assertEqual(day3.calculate_gears(day3.input_file), 82301120)
 
 if __name__ == '__main__':
     unittest.main()
