@@ -6,14 +6,10 @@ sample_file = "day04/sample.txt"
 def calculate_scratchcard_points_pt2(data_file):
     result = 0
     data = open(data_file).read().strip().splitlines()
-    global max_rows
     max_rows = len(data)
     print("Processing {} cards in total.".format(max_rows))
-
-    global wins
     wins = {}
-
-    for idx, row in enumerate(data):
+    for row in data:
         left = row.split("|")[0].strip().split(":")[1].strip()
         right = row.split("|")[1].strip()
         idx_card = int(row.split(":")[0].split(" ")[-1].strip())
@@ -31,16 +27,10 @@ def calculate_scratchcard_points_pt2(data_file):
     multiplier_for_copies = {}
     for x in range(max_rows):
         multiplier_for_copies[x+1] = 0
-    #  1 instance  of card 1
-    #  2 instances of card 2
-    #  4 instances of card 3
-    #  8 instances of card 4
-    # 14 instances of card 5
-    #  1 instance  of card 6
     while active_card < max_rows:
         print("-----")
         if wins[active_card]:
-            # ggf. prüfen, wie viele kopien es von dieser karte gibt
+            # check if we have copies for this card
             if multiplier_for_copies[active_card] > 0:
                 print("Card {} also has copies.".format(active_card))
                 # once for the original card + the copies
@@ -52,7 +42,6 @@ def calculate_scratchcard_points_pt2(data_file):
                 for x in range(active_card+1, active_card+1+wins[active_card]):
                     print("\_ Card {} -wins-copy-of-> {}".format(active_card, x))
                     multiplier_for_copies[x] += 1
-                
         active_card += 1
 
     for x in range(max_rows):
@@ -88,5 +77,5 @@ def calculate_scratchcard_points_pt1(data_file):
 if __name__ == "__main__":
     # print(calculate_scratchcard_points_pt1(sample_file))
     # print(calculate_scratchcard_points_pt1(input_file))
-    # print(calculate_scratchcard_points_pt2(sample_file))
-    print(calculate_scratchcard_points_pt2(input_file))
+    print(calculate_scratchcard_points_pt2(sample_file))
+    # print(calculate_scratchcard_points_pt2(input_file))
