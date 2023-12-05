@@ -15,7 +15,10 @@ https://adventofcode.com/2023
 
 - [Python » gear_ratios.py](day03/gear_ratios.py)
 
-
 ## Day 4
 
 - [Python » scratchcards.py](day04/scratchcards.py)
+
+## Day 5
+
+- [Python » seeing.py](day05/seeding.py)
