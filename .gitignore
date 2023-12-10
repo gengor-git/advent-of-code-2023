@@ -161,3 +161,5 @@ cython_debug/
 bin
 lib64
 pyvenv.cfg
+etc/jupyter
+share
