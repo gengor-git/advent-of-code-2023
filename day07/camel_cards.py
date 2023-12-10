@@ -1,9 +1,25 @@
-import re
+# import re
 # import pandas as pd
 
 input_file = 'day07/input.txt'
 sample_file = 'day07/sample.txt'
 
+def card_to_int(card: str) -> int:
+    decimal_representations = {}
+    decimal_representations['A'] = 14
+    decimal_representations['K'] = 13
+    decimal_representations['Q'] = 12
+    decimal_representations['J'] = 11
+    decimal_representations['T'] = 10
+    decimal_representations['9'] = 9
+    decimal_representations['8'] = 8
+    decimal_representations['7'] = 7
+    decimal_representations['6'] = 6
+    decimal_representations['5'] = 5
+    decimal_representations['4'] = 4
+    decimal_representations['3'] = 3
+    decimal_representations['2'] = 2
+    return decimal_representations[card]
 
 def calculate_winnings(data_file) -> int:
     result = 0
@@ -19,12 +35,9 @@ def calculate_winnings(data_file) -> int:
         hand_value = {}
         for card in cards:
             if hand.count(card) > 0:
-                hand_value[card] = hand.count(card)
+                hand_value[card_to_int(card)] = hand.count(card)
         sorted_hand_value = dict(sorted(hand_value.items(), key=lambda item: item[1], reverse=True))
         print(sorted_hand_value)
-
-        
-
 
     return result
 
