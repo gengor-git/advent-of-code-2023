@@ -60,7 +60,6 @@ def calculate_start_delays(data_file):
         print("Calculation for race duration of {:4}".format(race_duration))
         pressed = 0
         wins = 0
-        race_results = []
         while pressed < race_duration:
             # print("Pressing for {:3}ms".format(pressed))
             # formula
