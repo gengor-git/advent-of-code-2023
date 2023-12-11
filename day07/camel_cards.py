@@ -1,5 +1,4 @@
-# import re
-# import pandas as pd
+from collections import Counter
 
 input_file = 'day07/input.txt'
 sample_file = 'day07/sample.txt'
@@ -21,6 +20,10 @@ def card_to_int(card: str) -> int:
     decimal_representations['2'] = 2
     return decimal_representations[card]
 
+def hand_to_list(hand: str) -> list:
+    hand_list = [card_to_int(x) for x in list(hand)]
+    return hand_list
+
 def calculate_winnings(data_file) -> int:
     result = 0
     data = open(data_file).read().strip().splitlines()
@@ -28,16 +31,23 @@ def calculate_winnings(data_file) -> int:
     cards = "AKQJT98765432"
 
     for play in data:
-        hand = play.split()[0].strip()
+        hand = hand_to_list(play.split()[0].strip())
         bid = int(play.split()[1].strip())
         print("Hand {} with bid {}".format(hand, bid))
+
+        c = Counter(hand)
+        # Alternatives to counter:
+        # (1)
         # hand_values = pd.Series(list(hand))
-        hand_value = {}
-        for card in cards:
-            if hand.count(card) > 0:
-                hand_value[card_to_int(card)] = hand.count(card)
-        sorted_hand_value = dict(sorted(hand_value.items(), key=lambda item: item[1], reverse=True))
-        print(sorted_hand_value)
+        # (2)
+        # hand_value = {}
+        # for card in cards:
+        #     if hand.count(card) > 0:
+        #         hand_value[card_to_int(card)] = hand.count(card)
+        # sorted_hand_value = dict(sorted(hand_value.items(), key=lambda item: item[1], reverse=True))
+        # print(sorted_hand_value)
+        print(c)
+        print(c.most_common(1)[0][1])
 
     return result
 
