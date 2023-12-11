@@ -64,4 +64,4 @@ def calculate_winnings(data_file) -> int:
     return result
 
 if __name__ == "__main__":
-    calculate_winnings(sample_file)
+    print(calculate_winnings(sample_file))
